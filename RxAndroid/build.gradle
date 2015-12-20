@@ -1,0 +1,53 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.2.4'
+    }
+}
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.tianya.zhg.rxandroid"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding{
+        enabled=true;
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'de.greenrobot:eventbus:3.0.0-beta1'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.3.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-design:0.3.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:0.3.0'
+    compile 'com.trello:rxlifecycle-components:0.4.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'com.trello:rxlifecycle:0.4.0'
+    compile 'com.f2prateek.rx.preferences:rx-preferences:1.0.1'
+}

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ZhgSamples</string>
     <string name="action_settings">Settings</string>
+    <plurals name="test">
+        <item quantity="one">one</item>
+    </plurals>
 </resources>

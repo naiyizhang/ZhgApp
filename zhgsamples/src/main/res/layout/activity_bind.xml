@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="com.example.ContactItem">
+
+        <import type="android.view.View"></import>
+
+        <variable
+            name="user"
+            type="com.zhg.api.samples.databinding.User"></variable>
+
+        <variable
+            name="myHandler"
+            type="com.zhg.api.samples.databinding.MyHandler"></variable>
+        <variable
+            name="stu"
+            type="com.zhg.api.samples.databinding.Student"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{user.isFriend?myHandler.onClickFriend:myHandler.onClickEnemy}"
+            android:text="@{stu.name}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{user.isFriend?myHandler.onClickFriend:myHandler.onClickEnemy}"
+            android:text="@{Integer.toString(stu.age)}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#80000000"
+            android:text="@{user.txt}"
+            android:visibility="@{user.isAdult?View.VISIBLE:View.GONE}" />
+
+        <include
+            layout="@layout/name"
+            app:myHandler="@{myHandler}"
+            app:user="@{user}"></include>
+
+        <include
+            layout="@layout/contact"
+            app:user="@{user}"></include>
+    </LinearLayout>
+
+</layout>

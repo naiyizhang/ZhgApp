@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.zhg.api.samples.databinding.User" />
+        <variable
+            name="myHandler"
+            type="com.zhg.api.samples.databinding.MyHandler"></variable>
+    </data>
+
+    <TextView
+        android:onClick="@{myHandler.onClickMe}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{user.firstName}" />
+
+</layout>
