@@ -15,16 +15,17 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TargetActivity" />
-        <activity android:name=".databinding.DataBindActivity"></activity>
+        <activity android:name=".databinding.DataBindActivity" />
         <activity android:name=".otto.LocationActivity">
+
+        </activity>
+        <activity android:name=".lambda.LambdaActivity"></activity>
+        <activity android:name=".retrofit.RetrofitActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".lambda.LambdaActivity">
-
         </activity>
     </application>
 
