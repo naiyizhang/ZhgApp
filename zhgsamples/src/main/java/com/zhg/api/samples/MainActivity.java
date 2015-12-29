@@ -2,6 +2,8 @@ package com.zhg.api.samples;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -58,6 +60,15 @@ public class MainActivity extends AppCompatActivity {
                 City city=City.builder().name("jack").number(19).extra("test").build();
                 intent.putExtra("city",city);
                 startActivity(intent);
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        TypedArray a=MainActivity.this.obtainStyledAttributes(new int[]{android.R.attr.colorPrimaryDark});
+//                        int color=a.getColor(0, 0x00000000);
+//                        Log.e("info","color="+color);
+//                        a.recycle();
+//                    }
+//                });
             }
         });
 
