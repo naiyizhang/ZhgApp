@@ -2,11 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data class="com.example.ContactItem">
+    <data class="com.example.ContactItem" >
 
         <import type="android.view.View"></import>
 
         <variable
+
             name="user"
             type="com.zhg.api.samples.databinding.User"></variable>
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.zhg.api.samples.databinding.User" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/id_text"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            tools:text="@{user.txt}" />
+
+        <Button
+            android:id="@+id/id_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/id_text"
+            android:text="click me" />
+    </RelativeLayout>
+</layout>

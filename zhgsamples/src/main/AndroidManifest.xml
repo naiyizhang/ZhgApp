@@ -14,21 +14,28 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TargetActivity" />
+        <activity android:name=".databinding.DataBindActivity" />
+        <activity android:name=".otto.LocationActivity" />
+        <activity android:name=".lambda.LambdaActivity" />
+        <activity android:name=".retrofit.RetrofitActivity" />
+        <activity android:name=".okhttp.OkHttpTestActivity" />
+        <activity
+            android:name=".design.TabLayoutActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".design.ToolbarActivity"
             android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".databinding.RecycleViewActivity"></activity>
+        <activity android:name=".design.ToolbarDemoActivity" android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".TargetActivity" />
-        <activity android:name=".databinding.DataBindActivity" />
-        <activity android:name=".otto.LocationActivity" />
-        <activity android:name=".lambda.LambdaActivity" />
-        <activity android:name=".retrofit.RetrofitActivity"></activity>
-        <activity android:name=".okhttp.OkHttpTestActivity" />
-        <activity android:name=".design.TabLayoutActivity" android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
     </application>
 

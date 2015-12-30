@@ -1,1 +1,1 @@
-include ':app', ':zhgsamples', ':zhgjsamples', ':RxAndroid'
+include ':app', ':zhgsamples', ':zhgjsamples', ':RxAndroid', ':TestMinSDKModule'

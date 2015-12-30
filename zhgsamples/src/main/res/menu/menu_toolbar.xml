@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/id_menu_1"
+        android:icon="@mipmap/heart"
+        android:orderInCategory="1"
+        app:showAsAction="ifRoom"
+        android:title="menu1"></item>
+    <item
+        android:id="@+id/id_menu_2"
+        android:orderInCategory="2"
+        app:showAsAction="ifRoom"
+        android:title="menu2"></item>
+    <item android:id="@+id/id_menu_3"
+        android:title="menu3"
+        android:orderInCategory="3"
+        app:showAsAction="ifRoom"
+        ></item>
+</menu>

@@ -1,5 +1,6 @@
 package com.zhg.api.samples.databinding;
 
+import android.app.LauncherActivity;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ public class DataBindActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ContactItem binding=DataBindingUtil.setContentView(this, R.layout.activity_bind);
+        ContactItem b1=ContactItem.inflate(getLayoutInflater());
         User user=new User("Tom","Zhang");
         user.setTxt("this is a world");
         user.setIsAdult(false);

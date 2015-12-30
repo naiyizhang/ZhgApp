@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zhg.api.samples.design.ToolbarActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/id_toolbar"
+        app:logo="@mipmap/ic_launcher"
+        app:navigationIcon="@mipmap/nav_logo"
+        app:title="title"
+        app:subtitle="subtitle"
+        app:titleMarginStart="20dp"
+        app:titleTextColor="#0000ff"
+        app:subtitleTextColor="#ff0000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v7.widget.Toolbar>
+
+    <GridLayout
+        android:id="@+id/id_gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_toolbar"
+        android:columnCount="3"
+        android:useDefaultMargins="true">
+
+        <TextView
+            android:id="@+id/id_title_name"
+            android:layout_gravity="right"
+            android:text="first name:"
+            />
+        <EditText
+            android:id="@+id/id_name"
+            android:layout_columnSpan="2"
+            android:ems="10"
+            />
+        <TextView
+            android:layout_column="0"
+            android:text="last name:"
+            android:layout_gravity="right"
+            />
+        <EditText
+            android:layout_columnSpan="2"
+            android:ems="10"
+            />
+        <TextView
+            android:text="visit type:"
+            android:layout_column="0"
+            android:layout_gravity="right"
+            />
+        <RadioGroup
+            android:layout_columnSpan="2"
+            >
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:text="Business"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:text="Social"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+        <Button
+            android:text="ok"
+            android:layout_column="1"
+            />
+        <Button
+            android:text="cancel"
+            android:layout_column="2"
+            />
+    </GridLayout>
+</RelativeLayout>

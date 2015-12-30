@@ -29,6 +29,10 @@ public class User extends BaseObservable{
         this.lastName = lastName;
     }
 
+    public User(String txt) {
+        this.txt = txt;
+    }
+
     public String getTxt() {
         return txt;
     }
