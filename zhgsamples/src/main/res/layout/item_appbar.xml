@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<data>
+    <variable
+        name="entity"
+        type="com.zhg.api.samples.design.Entity"/>
+</data>
+    <TextView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:textSize="18sp"
+        android:padding="50dp"
+        android:textColor="#ff0000"
+        android:text="@{entity.name+','+entity.age+','+entity.mobile}"
+        />
+
+</layout>

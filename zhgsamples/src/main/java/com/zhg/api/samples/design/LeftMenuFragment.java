@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +14,17 @@ import android.widget.TextView;
 
 import com.zhg.api.samples.R;
 
-import java.lang.reflect.Array;
-
 /**
  * Created by nyzhang on 2015/12/30.
  */
 public class LeftMenuFragment extends ListFragment {
     private MenuItem[] menuItems;
     private ArrayAdapter<MenuItem> mAdapter;
-
+    private static final String KEY_POS="key_position";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         String[] arrays=getResources().getStringArray(R.array.menu_array);
         menuItems=new MenuItem[arrays.length];
         for(int i=0;i<arrays.length;i++){
@@ -34,6 +34,45 @@ public class LeftMenuFragment extends ListFragment {
 
         currentMenuItem=menuItems[0];
         currentMenuItem.isSelected=true;
+
+        Log.e("info","LeftMenuFragment.onCreate()");
+
+//        if(savedInstanceState!=null)
+//            mCurrentPosition=savedInstanceState.getInt(KEY_POS,0);
+    }
+
+    public void updateSelectedPostionByPostion(String title){
+        int index= getTitleIndex(title);
+        if(index!=-1){
+            mCurrentPosition=index;
+        }
+
+    }
+
+    private int getTitleIndex(String title) {
+        String[]arrays=getResources().getStringArray(R.array.menu_array);
+        for(int i=0;i<arrays.length;i++){
+            String str=arrays[i];
+            if(str.equals(title)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_POS,mCurrentPosition);
+    }
+
+
+
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if(savedInstanceState!=null)
+            mCurrentPosition=savedInstanceState.getInt(KEY_POS,0);
     }
 
     @Override
@@ -53,10 +92,18 @@ public class LeftMenuFragment extends ListFragment {
                 TextView textView= (TextView) convertView;
                 MenuItem data=getItem(position);
                 textView.setText(data.text);
-                if(data.isSelected){
+                if(mCurrentPosition==position){
                     textView.setCompoundDrawablesWithIntrinsicBounds(data.iconSelected,0,0,0);
                     textView.setBackgroundColor(Color.BLUE);
-                    if(currentTextView==null)currentTextView=textView;
+                    currentTextView=textView;
+                    currentMenuItem=data;
+                }else if(data.isSelected){
+                    textView.setCompoundDrawablesWithIntrinsicBounds(data.iconSelected,0,0,0);
+                    textView.setBackgroundColor(Color.BLUE);
+                    if(currentTextView==null) {//第一次初始化，初始化view和position的值
+                        currentTextView = textView;
+                        mCurrentPosition=position;
+                    }
                 }else{
                     textView.setCompoundDrawablesWithIntrinsicBounds(data.icon,0,0,0);
                     textView.setBackgroundColor(Color.TRANSPARENT);
@@ -68,6 +115,7 @@ public class LeftMenuFragment extends ListFragment {
 
     private MenuItem currentMenuItem;
     private TextView currentTextView;
+    private int mCurrentPosition=0;
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         MenuItem item = setMenuItemSelected( v, position);
@@ -94,6 +142,7 @@ public class LeftMenuFragment extends ListFragment {
         textView.setBackgroundColor(Color.BLUE);
         currentMenuItem=item;
         currentTextView=textView;
+        mCurrentPosition=position;
         return item;
     }
 

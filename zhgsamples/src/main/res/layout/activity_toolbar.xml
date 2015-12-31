@@ -9,9 +9,9 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/id_toolbar"
         app:logo="@mipmap/ic_launcher"
-        app:navigationIcon="@mipmap/nav_logo"
         app:title="title"
         app:subtitle="subtitle"
+        app:navigationIcon="@mipmap/nav_logo"
         app:titleMarginStart="20dp"
         app:titleTextColor="#0000ff"
         app:subtitleTextColor="#ff0000"

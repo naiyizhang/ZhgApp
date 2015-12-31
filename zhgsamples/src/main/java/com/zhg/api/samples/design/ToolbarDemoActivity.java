@@ -31,7 +31,6 @@ public class ToolbarDemoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolbar_demo);
         init();
-
 //        onRestoreInstanceState(savedInstanceState);
         FragmentManager fm=getSupportFragmentManager();
         mCurrentFragment= (ContentFragment) fm.findFragmentByTag(mTitle);
@@ -55,30 +54,33 @@ public class ToolbarDemoActivity extends AppCompatActivity {
         mLeftMenuFragment.setOnMenuItemSelectedListener(new LeftMenuFragment.OnMenuItemSelectedListener() {
             @Override
             public void onMenuItemSelect(String title) {
-                FragmentManager fm = getSupportFragmentManager();
-                ContentFragment contentFragment = (ContentFragment) fm.findFragmentByTag(title);
-                if (mCurrentFragment == contentFragment) {
-                    mDrawerLayout.closeDrawer(Gravity.LEFT);
-                    return;
-                }
-                FragmentTransaction ft = fm.beginTransaction();
-                ft.hide(mCurrentFragment);
-                if (contentFragment == null) {
-                    contentFragment = ContentFragment.getInstance(title);
-                    ft.add(R.id.id_content_container, contentFragment, title);
-                } else {
-                    ft.show(contentFragment);
-                }
-                ft.commit();
-                mCurrentFragment = contentFragment;
-                mDrawerLayout.closeDrawer(Gravity.LEFT);
-                mTitle = title;
-                mToolbar.setTitle(title);
+                if (updateContentFragment(title)) return;
+                mToolbar.setTitle(mTitle=title);
             }
         });
 
     }
 
+    private boolean updateContentFragment(String title) {
+        FragmentManager fm = getSupportFragmentManager();
+        ContentFragment contentFragment = (ContentFragment) fm.findFragmentByTag(title);
+        if (mCurrentFragment == contentFragment) {
+            mDrawerLayout.closeDrawer(Gravity.LEFT);
+            return true;
+        }
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.hide(mCurrentFragment);
+        if (contentFragment == null) {
+            contentFragment = ContentFragment.getInstance(title);
+            ft.add(R.id.id_content_container, contentFragment, title);
+        } else {
+            ft.show(contentFragment);
+        }
+        ft.commit();
+        mCurrentFragment = contentFragment;
+        mDrawerLayout.closeDrawer(Gravity.LEFT);
+        return false;
+    }
 
 
     @Override
@@ -95,6 +97,9 @@ public class ToolbarDemoActivity extends AppCompatActivity {
             mTitle=getResources().getStringArray(R.array.menu_array)[0];
         }else {
             mToolbar.setTitle(mTitle);
+            updateContentFragment(mTitle);
+            if(mLeftMenuFragment!=null)
+                mLeftMenuFragment.updateSelectedPostionByPostion(mTitle);
         }
     }
 

@@ -26,11 +26,28 @@ public class ContentFragment extends Fragment{
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEY_TITLE,mTitle);
+    }
+
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if(savedInstanceState!=null)
+            mTitle=savedInstanceState.getString(KEY_TITLE);
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         if(getArguments()!=null){
             mTitle=getArguments().getString(KEY_TITLE);
         }
+//        if(savedInstanceState!=null)
+//            mTitle=savedInstanceState.getString(KEY_TITLE);
     }
 
     @Nullable
