@@ -7,11 +7,15 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.f2prateek.rx.preferences.Preference;
 import com.f2prateek.rx.preferences.RxSharedPreferences;
 import com.jakewharton.rxbinding.widget.RxCompoundButton;
+import com.jakewharton.rxbinding.widget.RxTextView;
+import com.jakewharton.rxbinding.widget.TextViewAfterTextChangeEvent;
 import com.tianya.zhg.rxandroid.bean.ObjData;
 
 import java.util.Random;
@@ -20,6 +24,7 @@ import de.greenrobot.event.EventBus;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.android.schedulers.HandlerScheduler;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -74,8 +79,8 @@ public class ClickHandler {
         Preference<String> username=rxSharedPreferences.getString("username");
         Preference<Boolean> checked=rxSharedPreferences.getBoolean("show",true);
         RxCompoundButton.checkedChanges(checkBox).subscribe(checked.asAction());
+        username.set("username " + new Random().nextInt());
 
-        username.set("username "+new Random().nextInt());
     }
     public void show(View view){
         SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(view.getContext());

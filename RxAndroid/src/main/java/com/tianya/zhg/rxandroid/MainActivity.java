@@ -19,6 +19,7 @@ import com.tianya.zhg.rxandroid.databinding.ActivityMainBinding;
 import com.tianya.zhg.rxandroid.databinding.ClickHandler;
 import com.tianya.zhg.rxandroid.presenter.MainPresenter;
 import com.trello.rxlifecycle.ActivityEvent;
+import com.trello.rxlifecycle.RxLifecycle;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import java.util.concurrent.TimeUnit;
@@ -69,7 +70,8 @@ public class MainActivity extends RxAppCompatActivity implements MainView {
                 .doOnUnsubscribe(() -> Log.e("info", "Unsubcribing subcriptoin from onCreate()"))
                 .compose(this.<Long>bindUntilEvent(ActivityEvent.PAUSE))
                 .subscribe(aLong -> Log.e("info", "Start in onCreate,running until onPause() " + aLong));
-
+//        RxLifecycle.bindActivity()
+//        RxLifecycle.bindUntilActivityEvent()
     }
 
     @Override

@@ -26,11 +26,18 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".design.ToolbarActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".databinding.RecycleViewActivity" />
+        <activity
+            android:name=".design.ToolbarDemoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".design.AppbarActivity"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <activity android:name=".databinding.RecycleViewActivity"></activity>
-        <activity android:name=".design.ToolbarDemoActivity" android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".design.CollapsingToolbarActivity" android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

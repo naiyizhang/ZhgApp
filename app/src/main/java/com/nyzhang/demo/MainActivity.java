@@ -15,11 +15,18 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.util.concurrent.TimeUnit;
+
+import rx.Observable;
+import rx.Scheduler;
+import rx.schedulers.Schedulers;
+
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
