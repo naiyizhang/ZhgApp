@@ -1,15 +1,18 @@
 package com.zhg.api.samples;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.ArrayMap;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
@@ -48,6 +51,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                new AsyncTask<Void, Void, Void>() {
+                    @Override
+                    protected Void doInBackground(Void... params) {
+                        Map<String,String> map=new HashMap<String, String>();
+                        map.put("123","123");
+                        map.put("1232","123");
+                        map.put("12322","123");
+                        map.put("12332","123");
+                        map.put("1213","123");
+                        Log.e("info",map.get("123"));
+                        return null;
+                    }
+                }.execute();
             }
         });
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
 //                });
             }
         });
-
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.KITKAT){
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//透明状态栏
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);//透明导航栏
@@ -97,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         Log.e("info","onCreateView====3"+name);
         return super.onCreateView(name, context, attrs);
     }
+    private void test(){}
 
     @Override
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {

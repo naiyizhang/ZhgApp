@@ -10,4 +10,7 @@
 
     <string name="open">open</string>
     <string name="close">close</string>
+
+    <string name="hello">Hello %s!</string>
+    <bool name="somebool">true</bool>
 </resources>

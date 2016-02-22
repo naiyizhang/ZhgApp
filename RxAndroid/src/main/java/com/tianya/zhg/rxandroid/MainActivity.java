@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
 import com.tianya.zhg.rxandroid.bean.ObjData;
+import com.tianya.zhg.rxandroid.bean.Person;
 import com.tianya.zhg.rxandroid.databinding.ActivityMainBinding;
 import com.tianya.zhg.rxandroid.databinding.ClickHandler;
 import com.tianya.zhg.rxandroid.presenter.MainPresenter;
@@ -29,6 +30,7 @@ import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 import de.greenrobot.event.Subscribe;
 import rx.Observable;
+import rx.Subscriber;
 
 public class MainActivity extends RxAppCompatActivity implements MainView {
 
@@ -65,6 +67,7 @@ public class MainActivity extends RxAppCompatActivity implements MainView {
 
         init();
 
+
         Log.d("info", "onCreate()");
         Observable.interval(1, TimeUnit.SECONDS)
                 .doOnUnsubscribe(() -> Log.e("info", "Unsubcribing subcriptoin from onCreate()"))
@@ -72,6 +75,7 @@ public class MainActivity extends RxAppCompatActivity implements MainView {
                 .subscribe(aLong -> Log.e("info", "Start in onCreate,running until onPause() " + aLong));
 //        RxLifecycle.bindActivity()
 //        RxLifecycle.bindUntilActivityEvent()
+
     }
 
     @Override

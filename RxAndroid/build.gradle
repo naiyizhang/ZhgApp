@@ -36,7 +36,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
@@ -45,9 +45,10 @@ dependencies {
     compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'
     compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.3.0'
     compile 'com.jakewharton.rxbinding:rxbinding-design:0.3.0'
-    compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:0.3.0'
     compile 'com.trello:rxlifecycle-components:0.4.0'
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'com.trello:rxlifecycle:0.4.0'
     compile 'com.f2prateek.rx.preferences:rx-preferences:1.0.1'
+    compile 'com.android.support:support-v4:23.1.1'
+    compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:0.3.0'
 }

@@ -26,8 +26,15 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        Converter<String,Integer> converter=Integer::valueOf;
+
     }
 
+
+    public interface  Converter<F,T>{
+        T convert(F t);
+    }
+    private void test(String s){}
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

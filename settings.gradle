@@ -1,1 +1,1 @@
-include ':app', ':zhgsamples', ':zhgjsamples', ':RxAndroid', ':TestMinSDKModule'
+include ':app', ':zhgsamples', ':zhgjsamples', ':RxAndroid', ':TestMinSDKModule', ':AndoridAnnotations', ':GoogleDagger2'

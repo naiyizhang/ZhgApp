@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndoridAnnotations/AndoridAnnotations.iml" filepath="$PROJECT_DIR$/AndoridAnnotations/AndoridAnnotations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GoogleDagger2/GoogleDagger2.iml" filepath="$PROJECT_DIR$/GoogleDagger2/GoogleDagger2.iml" />
       <module fileurl="file://$PROJECT_DIR$/RxAndroid/RxAndroid.iml" filepath="$PROJECT_DIR$/RxAndroid/RxAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestMinSDKModule/TestMinSDKModule.iml" filepath="$PROJECT_DIR$/TestMinSDKModule/TestMinSDKModule.iml" />
       <module fileurl="file://$PROJECT_DIR$/ZhgApp.iml" filepath="$PROJECT_DIR$/ZhgApp.iml" />

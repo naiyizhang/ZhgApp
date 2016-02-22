@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AndoridAnnotations</string>
+
+    <string-array name="bestfoods">
+        <item>Foie gras</item>
+        <item>pez espada</item>
+        <item>california maki</item>
+    </string-array>
+
+    <color name="androidColor">#a4c639</color>
+
+    <string name="hello">Hello %s!</string>
+    <bool name="somebool">true</bool>
+</resources>

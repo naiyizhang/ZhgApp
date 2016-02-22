@@ -10,6 +10,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AndoridAnnotations" />
+            <option value="$PROJECT_DIR$/GoogleDagger2" />
             <option value="$PROJECT_DIR$/RxAndroid" />
             <option value="$PROJECT_DIR$/TestMinSDKModule" />
             <option value="$PROJECT_DIR$/app" />

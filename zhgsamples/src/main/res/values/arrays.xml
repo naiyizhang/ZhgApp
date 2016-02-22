@@ -5,4 +5,10 @@
         <item>menu2</item>
         <item>menu3</item>
     </string-array>
+
+    <string-array name="bestfoods">
+        <item>Foie gras</item>
+        <item>pez espada</item>
+        <item>california maki</item>
+    </string-array>
 </resources>

@@ -33,6 +33,7 @@ public class AppbarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appbar);
         ButterKnife.bind(this);
+        setSupportActionBar(mToolbar);
         mFloatingActionBar.setOnClickListener(v -> {
             Snackbar.make(v, "this is a snackbar toast", Snackbar.LENGTH_SHORT)
                     .setAction("click me", view -> Log.e("info", "click me do what?!!!"))
