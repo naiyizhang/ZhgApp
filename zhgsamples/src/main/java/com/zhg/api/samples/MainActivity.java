@@ -1,6 +1,7 @@
 package com.zhg.api.samples;
 
 import android.annotation.TargetApi;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -8,6 +9,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.zhg.api.samples.parcelable.City;
 import com.zhg.api.samples.parcelable.Person;
@@ -29,9 +32,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,19 +59,44 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                new AsyncTask<Void, Void, Void>() {
-                    @Override
-                    protected Void doInBackground(Void... params) {
-                        Map<String,String> map=new HashMap<String, String>();
-                        map.put("123","123");
-                        map.put("1232","123");
-                        map.put("12322","123");
-                        map.put("12332","123");
-                        map.put("1213","123");
-                        Log.e("info",map.get("123"));
-                        return null;
-                    }
-                }.execute();
+//                new AsyncTask<Void, Void, Void>() {
+//                    @Override
+//                    protected Void doInBackground(Void... params) {
+//                        Map<String,String> map=new HashMap<String, String>();
+//                        map.put("123","123");
+//                        map.put("1232","123");
+//                        map.put("12322","123");
+//                        map.put("12332","123");
+//                        map.put("1213","123");
+//                        Log.e("info",map.get("123"));
+//                        return null;
+//                    }
+//                }.execute();
+
+//                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//                intent.setType("*/*");
+//                intent.addCategory(Intent.CATEGORY_OPENABLE);
+//
+//                try {
+//                    startActivityForResult( Intent.createChooser(intent, "Select a File to Upload"), 0);
+//                } catch (android.content.ActivityNotFoundException ex) {
+//                    Toast.makeText(MainActivity.this, "Please install a File Manager.", Toast.LENGTH_SHORT).show();
+//                }
+
+//                Intent mIntent = new Intent( );
+//                ComponentName comp = new ComponentName("com.mediatek.filemanager", "com.mediatek.filemanager.FileManagerOperationActivity");
+//                mIntent.setComponent(comp);
+//                mIntent.setAction("android.intent.action.VIEW");
+//                mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(mIntent);
+
+//                final int REQUEST_CODE_SELECT_IMAGE = 1;
+//                Intent openAlbumIntent = new Intent(Intent.ACTION_GET_CONTENT);
+//
+//                openAlbumIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "file/*");
+//                startActivityForResult(openAlbumIntent, REQUEST_CODE_SELECT_IMAGE);
+
+                test();
             }
         });
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +145,39 @@ public class MainActivity extends AppCompatActivity {
         Log.e("info","onCreateView====3"+name);
         return super.onCreateView(name, context, attrs);
     }
-    private void test(){}
+    private void test(){
+
+        rx.Observable.create(new rx.Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                Log.e("info","call===="+Thread.currentThread().getName());
+                subscriber.onNext("test1");
+                subscriber.onCompleted();
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onStart() {
+                        Log.e("info", "onStart=" + Thread.currentThread().getName());
+                    }
+
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        Log.e("info", "onNext=" + Thread.currentThread().getName());
+                        Log.e("info", "ssss=" + s);
+                    }
+                });
+    }
 
     @Override
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
